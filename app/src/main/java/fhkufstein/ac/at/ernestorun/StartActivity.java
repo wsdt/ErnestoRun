@@ -1,10 +1,12 @@
 package fhkufstein.ac.at.ernestorun;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
 public class StartActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -17,6 +19,15 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.raupe).setOnClickListener(this);
         findViewById(R.id.turtle).setOnClickListener(this);
         getSupportActionBar().hide();
+
+        ImageButton snailAnimation = (ImageButton) findViewById(R.id.snail);
+        ((AnimationDrawable) snailAnimation.getBackground()).start();
+
+        ImageButton raupeAnimation = (ImageButton) findViewById(R.id.raupe);
+        ((AnimationDrawable) raupeAnimation.getBackground()).start();
+
+        ImageButton turtleAnimation = (ImageButton) findViewById(R.id.turtle);
+        ((AnimationDrawable) turtleAnimation.getBackground()).start();
 
     }
 

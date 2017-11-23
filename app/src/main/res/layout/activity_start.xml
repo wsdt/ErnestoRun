@@ -27,8 +27,8 @@
         android:layout_marginBottom="55dp"
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/animals_1" />
+        android:background="@drawable/snail"
+        />
 
     <ImageButton
         android:id="@+id/raupe"
@@ -36,8 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/snail"
         android:layout_centerHorizontal="true"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/animals_2" />
+        android:background="@drawable/raupe" />
 
     <ImageButton
         android:id="@+id/turtle"
@@ -48,8 +47,7 @@
         android:layout_alignTop="@+id/raupe"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/animals_4" />
+        android:background="@drawable/turtle" />
 
     <TextView
         android:id="@+id/Textview"
