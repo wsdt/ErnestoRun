@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import java.util.Random;
 
+
 public class GameActivity extends AppCompatActivity {
     public static Random r = new Random();
     //IMPORTANT: To keep everything working you need to set the following to countVars to the Anzahl of available pictures. We start counting at 1
@@ -30,6 +31,5 @@ public class GameActivity extends AppCompatActivity {
     public void setPlayer(int drawable_id) {
         //auf item player classes
     }
-
-
+    
 }
