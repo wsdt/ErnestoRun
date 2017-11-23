@@ -13,8 +13,8 @@ import java.util.Random;
 public class GameActivity extends AppCompatActivity {
     public static Random r = new Random();
     //IMPORTANT: To keep everything working you need to set the following to countVars to the Anzahl of available pictures. We start counting at 1
-    public static int countBackgroundImages = 1;
-    public static int countBackgroundSounds = 0;
+    public static int countBackgroundImages = 2;
+    public static int countBackgroundSounds = 15;
     private int difficultyConstant = 0;
 
     @Override
@@ -33,7 +33,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void changeLevel() {
         //IMPORTANT: Only images/sounds will be loaded which are below the max nr of the other one (img_1 will be called with sound_1)
-        int randomnr = r.nextInt(( (countBackgroundImages > countBackgroundSounds ? countBackgroundSounds : countBackgroundImages) -1)+1)+1;
+        int randomnr = r.nextInt(((countBackgroundImages > countBackgroundSounds ? countBackgroundSounds : countBackgroundImages)-1)+1)+1;
         setRandomBackground(randomnr);
         setRandomBackgroundMusik(randomnr);
     }
@@ -44,10 +44,12 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void setRandomBackground(int randomnr) {
+        Log.e("BG","BG: "+randomnr);
         (findViewById(R.id.gameContent)).setBackgroundResource(getResources().getIdentifier("background_"+randomnr,"drawable",getPackageName()));
     }
 
     private void setRandomBackgroundMusik(int randomnr) {
+        Log.e("MU","MU: "+randomnr);
         MediaPlayer mediaPlayer = MediaPlayer.create(this,getResources().getIdentifier("bgmusik_"+randomnr,"raw",getPackageName()));
         mediaPlayer.start();
     }
