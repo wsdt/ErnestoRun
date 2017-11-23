@@ -34,7 +34,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         Intent i = new Intent(this, GameActivity.class);
-        i.putExtra("character", R.id.snail == view.getId() ? R.drawable.animals_1 : R.id.raupe == view.getId() ? R.drawable.animals_2 : R.drawable.animals_4);
+        i.putExtra("character", R.id.snail == view.getId() ? R.drawable.snail : (R.id.raupe == view.getId() ? R.drawable.raupe : R.drawable.turtle));
         startActivity(i);
     }
 }

@@ -7,6 +7,18 @@
     android:id="@+id/gameContent"
     tools:context="fhkufstein.ac.at.ernestorun.GameActivity">
 
+    <ImageButton
+        android:id="@+id/character"
+        android:contentDescription="Character of App"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/snail"
+        />
+
 
     <LinearLayout
         android:layout_width="wrap_content"
