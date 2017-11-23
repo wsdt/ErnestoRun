@@ -1,14 +1,17 @@
 package fhkufstein.ac.at.ernestorun;
 
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.Image;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -22,6 +25,7 @@ public class GameActivity extends AppCompatActivity {
     //IMPORTANT: To keep everything working you need to set the following to countVars to the Anzahl of available pictures. We start counting at 1
     public static int countBackgroundImages = 10;
     public static int countBackgroundSounds = 15;
+    public static Switch greyBar;
     private int difficultyConstant = 0;
 
     @Override
@@ -32,6 +36,20 @@ public class GameActivity extends AppCompatActivity {
 
         //Set Character (Ernesto is default)
          startGame();
+
+         //Grey Bar Listener
+        ((Switch) findViewById(R.id.switchGreyBar)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                greyBar = findViewById(R.id.switchGreyBar);
+                if (!isChecked) {
+                    greyBar.setBackgroundColor(Color.TRANSPARENT);
+                } else {
+                    greyBar.setBackgroundColor(Color.parseColor("55cccccc"));
+                }
+            }
+        });
+
 
         //Change Background after certain values in highscore
         //TODO: CALL METHOD changeLevel() when item gets eaten, so a method in item classes have to call it.
