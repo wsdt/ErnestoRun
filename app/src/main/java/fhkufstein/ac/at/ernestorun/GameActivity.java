@@ -3,6 +3,8 @@ package fhkufstein.ac.at.ernestorun;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -22,19 +24,32 @@ public class GameActivity extends AppCompatActivity {
 
         //Set Character (Ernesto is default)
         setPlayer(getIntent().getIntExtra("character",R.drawable.animals_1));
-        setRandomBackground();
+        changeLevel();
 
         //Change Background after certain values in highscore
+        //TODO: CALL METHOD changeLevel() when item gets eaten, so a method in item classes have to call it.
     }
 
-    public void setRandomBackground() {
-        Log.e("BG","RES: "+r.nextInt((countBackgroundImages-1)+1)+1);
-        (findViewById(R.id.gameContent)).setBackgroundResource(getResources().getIdentifier("background_"+r.nextInt((countBackgroundImages-1)+1)+1,"drawable",getPackageName()));
+
+    public void changeLevel() {
+        //IMPORTANT: We need also the same amount of background images and background sounds (img_1 will be called with sound_1)
+        int randomnr = r.nextInt((countBackgroundImages-1)+1)+1
+        setRandomBackground(randomnr);
+        setRandomBackgroundMusik(randomnr);
     }
 
-    public void setPlayer(int drawable_id) {
+    private void setPlayer(int drawable_id) {
         //auf item player classes
         Log.e("PLAYER","Drawable: "+drawable_id);
+    }
+
+    private void setRandomBackground(int randomnr) {
+        Log.e("BG","RES: "+r.nextInt((countBackgroundImages-1)+1)+1);
+        (findViewById(R.id.gameContent)).setBackgroundResource(getResources().getIdentifier("background_"+randomnr,"drawable",getPackageName()));
+    }
+
+    private void setRandomBackgroundMusik(int randomnr) {
+
     }
 
 }
