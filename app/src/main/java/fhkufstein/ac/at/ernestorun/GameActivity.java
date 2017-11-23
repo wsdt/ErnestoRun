@@ -2,6 +2,8 @@ package fhkufstein.ac.at.ernestorun;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
 import java.util.Random;
 
 
@@ -16,6 +18,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        getSupportActionBar().hide();
 
         //Set Character (Ernesto is default)
         setPlayer(getIntent().getIntExtra("character",R.drawable.animals_1));
@@ -25,11 +28,13 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void setRandomBackground() {
+        Log.e("BG","RES: "+r.nextInt((countBackgroundImages-1)+1)+1);
         (findViewById(R.id.gameContent)).setBackgroundResource(getResources().getIdentifier("background_"+r.nextInt((countBackgroundImages-1)+1)+1,"drawable",getPackageName()));
     }
 
     public void setPlayer(int drawable_id) {
         //auf item player classes
+        Log.e("PLAYER","Drawable: "+drawable_id);
     }
-    
+
 }
