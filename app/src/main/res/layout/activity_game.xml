@@ -10,6 +10,7 @@
     <Switch
         android:id="@+id/switchGreyBar"
         android:layout_marginStart="20dp"
+        android:checked="true"
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
