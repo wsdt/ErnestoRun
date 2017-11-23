@@ -1,7 +1,9 @@
 package fhkufstein.ac.at.ernestorun;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -11,8 +13,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
 
+        //protected void changeGameState()
+
     }
-
-    //protected void changeGameState()
-
 }
