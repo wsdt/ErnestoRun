@@ -16,6 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="55dp"
         android:text="Gratulation!"
+        android:textColor="@android:color/background_dark"
         android:textSize="30sp" />
 
     <TextView
@@ -26,5 +27,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="87dp"
         android:text="Punkte"
+        android:textColor="@android:color/background_dark"
         android:textSize="24sp" />
 </RelativeLayout>
