@@ -8,11 +8,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/background_1" />
 
@@ -22,13 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="55dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:background="@drawable/snail"
-        />
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="40dp"
+        android:background="@drawable/snail" />
 
     <ImageButton
         android:id="@+id/raupe"
@@ -45,22 +40,15 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/raupe"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginEnd="40dp"
         android:background="@drawable/turtle" />
 
-    <TextView
-        android:id="@+id/Textview"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/snail"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
-        android:inputType="textPersonName"
-        android:text="To start game, click on a character"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
+        app:srcCompat="@drawable/ernestorun" />
 
 </RelativeLayout>
