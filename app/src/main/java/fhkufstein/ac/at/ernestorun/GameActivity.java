@@ -7,22 +7,17 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.NumberPicker;
-import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-
 import java.util.Random;
-
-import fhkufstein.ac.at.ernestorun.Classes.Animal;
+import fhkufstein.ac.at.ernestorun.Classes.Mediaplayer;
 
 
 public class GameActivity extends AppCompatActivity {
     public static Random r = new Random();
-    public static MediaPlayer mediaPlayer;
+    public static Mediaplayer mediaPlayer;
     //IMPORTANT: To keep everything working you need to set the following to countVars to the Anzahl of available pictures. We start counting at 1
     public static int countBackgroundImages = 10;
     public static int countBackgroundSounds = 15;
@@ -59,12 +54,12 @@ public class GameActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         super.onPause();
-        pauseMusik();
+        mediaPlayer.pauseMusik();
     }
     @Override
     public void onResume() {
         super.onResume();
-        resumeMusik();
+        mediaPlayer.resumeMusik();
     }
 
 
@@ -90,15 +85,8 @@ public class GameActivity extends AppCompatActivity {
     //MUSIK ##################################################
     private void setRandomBackgroundMusik(int randomnr) {
         Log.d("MU","MU: "+randomnr);
-        mediaPlayer = MediaPlayer.create(this,getResources().getIdentifier("bgmusik_"+randomnr,"raw",getPackageName()));
-        mediaPlayer.setLooping(true);
-        mediaPlayer.start();
-    }
-    private void pauseMusik() {
-        mediaPlayer.pause();
-    }
-    private void resumeMusik() {
-        mediaPlayer.start();
+        mediaPlayer = new Mediaplayer(this,getResources().getIdentifier("bgmusik_"+randomnr,"raw",getPackageName()));
+        mediaPlayer.startMusik();
     }
 
 
