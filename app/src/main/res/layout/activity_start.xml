@@ -17,36 +17,59 @@
 
     <ImageButton
         android:id="@+id/snail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@+id/duck"
+        android:layout_alignRight="@+id/duck"
+        android:layout_marginRight="200dp"
         android:background="@drawable/snail" />
 
     <ImageButton
         android:id="@+id/raupe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/snail"
-        android:layout_centerHorizontal="true"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@+id/duck"
+        android:layout_alignRight="@+id/duck"
+        android:layout_marginRight="100dp"
         android:background="@drawable/raupe" />
 
     <ImageButton
+        android:id="@+id/duck"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/duck" />
+
+    <ImageButton
         android:id="@+id/turtle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/raupe"
-        android:layout_marginEnd="40dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@+id/duck"
+        android:layout_alignLeft="@+id/duck"
+        android:layout_marginLeft="100dp"
         android:background="@drawable/turtle" />
 
+    <ImageButton
+        android:id="@+id/chick"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@+id/duck"
+        android:layout_alignLeft="@+id/duck"
+        android:layout_marginLeft="200dp"
+        android:background="@drawable/chick" />
+
+    <TextView
+        android:id="@+id/grey"
+        android:background="#55c4c1c1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
+
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/ernestorun"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/ernestorun" />
