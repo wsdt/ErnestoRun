@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class StartActivity extends AppCompatActivity implements View.OnClickListener{
@@ -20,6 +21,15 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.duck).setOnClickListener(this);
         findViewById(R.id.turtle).setOnClickListener(this);
         findViewById(R.id.chick).setOnClickListener(this);
+
+        final ImageButton buttonInfo = findViewById(R.id.infoButton);
+        buttonInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startInfoActivity();
+            }
+        });
+
         getSupportActionBar().hide();
 
         ImageButton snailAnimation = (ImageButton) findViewById(R.id.snail);
@@ -48,5 +58,10 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
                         view.getId()==R.id.duck ? R.drawable.duck :
                                 view.getId()==R.id.turtle ? R.drawable.turtle : R.drawable.chick);
         startActivity(i);
+    }
+
+    public void startInfoActivity(){
+        Intent intent = new Intent(this, InfoActivity.class);
+        startActivity(intent);
     }
 }
