@@ -91,6 +91,7 @@ public class GameActivity extends AppCompatActivity {
     private void setRandomBackgroundMusik(int randomnr) {
         Log.d("MU","MU: "+randomnr);
         mediaPlayer = MediaPlayer.create(this,getResources().getIdentifier("bgmusik_"+randomnr,"raw",getPackageName()));
+        mediaPlayer.setLooping(true);
         mediaPlayer.start();
     }
     private void pauseMusik() {

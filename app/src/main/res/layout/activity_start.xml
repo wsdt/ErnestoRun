@@ -15,6 +15,12 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/background_1" />
 
+    <TextView
+        android:id="@+id/grey"
+        android:background="#99c4c1c1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
+
 
     <ImageButton
         android:id="@+id/snail"
@@ -61,13 +67,11 @@
         android:layout_marginLeft="200dp"
         android:background="@drawable/chick" />
 
-    <TextView
-        android:id="@+id/grey"
-        android:background="#55c4c1c1"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"/>
+
+
 
     <ImageView
+        android:contentDescription="game_title"
         android:id="@+id/ernestorun"
         android:layout_width="match_parent"
         android:layout_height="150dp"
@@ -76,9 +80,12 @@
         app:srcCompat="@drawable/ernestorun" />
 
     <ImageButton
+        android:contentDescription="dialog_info"
         android:id="@+id/infoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@android:drawable/ic_dialog_info" />
