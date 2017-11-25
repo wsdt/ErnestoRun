@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 import fhkufstein.ac.at.ernestorun.Classes.Mediaplayer;
 
 public class StartActivity extends AppCompatActivity implements View.OnClickListener{
-    Mediaplayer mediaplayer;
+    public static Mediaplayer mediaplayer; //needs to be public for resuming in help activities
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -16,8 +16,21 @@ import fhkufstein.ac.at.ernestorun.Classes.ImageAdapter;
 import fhkufstein.ac.at.ernestorun.Classes.ImageAdapterBad;
 import fhkufstein.ac.at.ernestorun.Classes.ImageAdapterEnd;
 import fhkufstein.ac.at.ernestorun.Classes.ImageAdapterGood;
+import fhkufstein.ac.at.ernestorun.Classes.Mediaplayer;
 
 public class IconsActivity extends AppCompatActivity {
+    private static Mediaplayer mediaplayer = StartActivity.mediaplayer;
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mediaplayer.pauseMusik();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        mediaplayer.resumeMusik();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,6 +38,7 @@ public class IconsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_icons);
 
         getSupportActionBar().hide();
+        mediaplayer.resumeMusik();
 
         TextView textView = (TextView)findViewById(R.id.textviewicon);
 

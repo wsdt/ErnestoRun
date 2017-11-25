@@ -9,10 +9,13 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import fhkufstein.ac.at.ernestorun.Classes.Mediaplayer;
+
 public class InfoActivity extends AppCompatActivity {
 
     final int sdk = android.os.Build.VERSION.SDK_INT;
     public static final String EXTRA_MESSAGE = "fhkufstein.ac.at.ernestorun.MESSAGE";
+    private static Mediaplayer mediaplayer = StartActivity.mediaplayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,7 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
 
         getSupportActionBar().hide();
+        mediaplayer.resumeMusik(); //resume Musik of intro
 
         final ImageButton button1 = (ImageButton)findViewById(R.id.good);
         final ImageButton button2 = (ImageButton)findViewById(R.id.bad);
@@ -67,6 +71,17 @@ public class InfoActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, icon);
         startActivity(intent);
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mediaplayer.pauseMusik();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        mediaplayer.resumeMusik();
     }
 
 }
