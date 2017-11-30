@@ -9,6 +9,7 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -35,6 +36,25 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         getSupportActionBar().hide();
 
+        RelativeLayout rl = findViewById(R.id.gameContent);
+
+        TextView underline = findViewById(R.id.underline);
+
+        underline.setBackgroundColor(Color.RED);
+
+
+
+        /*rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            ImageButton button1 = findViewById(R.id.character);
+            button1.setBackgroundResource(R.drawable.snail1);
+
+
+
+            }
+        });*/
+
         //Set Character (Ernesto is default)
          startGame();
 
@@ -51,8 +71,18 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        Food essen = new Food(this,R.drawable.bad_10);
+        final Food essen = new Food(this,R.drawable.bad_10);
         RelativeLayout ll = ((RelativeLayout) findViewById(R.id.gameContent));
+        ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //if anweisung die überprüft, ob sich das item an der richtigen position befindet
+                essen.playEatSound(getApplicationContext(), R.raw.eatsound);
+
+            }
+        });
+
         ll.addView(essen);
 
 
@@ -96,6 +126,7 @@ public class GameActivity extends AppCompatActivity {
         Log.d("MU","MU: "+randomnr);
         mediaPlayer = new Mediaplayer(this,getResources().getIdentifier("bgmusik_"+randomnr,"raw",getPackageName()));
         mediaPlayer.startMusik();
+
     }
 
 

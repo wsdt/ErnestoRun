@@ -2,78 +2,84 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameContent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/gameContent"
     tools:context="fhkufstein.ac.at.ernestorun.GameActivity">
 
     <Switch
         android:id="@+id/switchGreyBar"
-        android:layout_marginStart="20dp"
-        android:checked="true"
-        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:checked="true"
         android:text="Grey Bar" />
 
     <TextView
         android:id="@+id/greyBar"
-        android:background="#55cccccc"
         android:layout_width="match_parent"
+        android:layout_height="75dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="30dp"
-        android:layout_height="75dp"/>
+        android:background="#55cccccc" />
 
     <ImageButton
         android:id="@+id/character"
-        android:contentDescription="Character of App"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginStart="20dp"
+        android:layout_alignStart="@+id/switchGreyBar"
+        android:layout_alignTop="@+id/greyBar"
         android:background="@drawable/snail"
-        />
+        android:contentDescription="Character of App" />
 
     <ImageView
         android:id="@+id/food"
-        android:contentDescription="Served food"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="-50dp"
-        android:background="@drawable/dead_01"/>
+        android:background="@drawable/dead_01"
+        android:contentDescription="Served food" />
 
 
     <LinearLayout
+        android:id="@+id/Highscore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:background="#123"
         android:gravity="center"
-        android:id="@+id/Highscore"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/HighscoreLabel"
-            android:layout_marginTop="3dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="3dp"
             android:text="Points"
             android:textColor="#fff"
             android:textSize="20sp" />
+
         <TextView
             android:id="@+id/HighscorePoints"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="#fff"
             android:layout_marginBottom="3dp"
-            android:text="0" />
+            android:text="0"
+            android:textColor="#fff"
+            android:textSize="20sp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/underline"
+        android:layout_width="60dp"
+        android:layout_height="5dp"
+        android:layout_alignBottom="@+id/greyBar"
+        android:layout_toEndOf="@+id/character" />
 
 </RelativeLayout>
