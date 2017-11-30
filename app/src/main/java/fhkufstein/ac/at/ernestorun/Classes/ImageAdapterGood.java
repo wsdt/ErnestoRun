@@ -67,11 +67,11 @@ public class ImageAdapterGood extends BaseAdapter {
 
     private Integer[] good = {
 
-            R.drawable.good_01, R.drawable.good_02,
-            R.drawable.good_03, R.drawable.good_04,
-            R.drawable.good_05, R.drawable.good_06,
-            R.drawable.good_07, R.drawable.good_08,
-            R.drawable.good_09, R.drawable.good_10,
+            R.drawable.good_1, R.drawable.good_2,
+            R.drawable.good_3, R.drawable.good_4,
+            R.drawable.good_5, R.drawable.good_6,
+            R.drawable.good_7, R.drawable.good_8,
+            R.drawable.good_9, R.drawable.good_10,
             R.drawable.good_11, R.drawable.good_12,
             R.drawable.good_13, R.drawable.good_14,
             R.drawable.good_15, R.drawable.good_16,

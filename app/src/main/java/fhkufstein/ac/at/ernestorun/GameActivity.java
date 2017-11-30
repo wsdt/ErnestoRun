@@ -40,7 +40,7 @@ public class GameActivity extends AppCompatActivity {
 
         TextView underline = findViewById(R.id.underline);
 
-        underline.setBackgroundColor(Color.RED);
+        underline.setBackgroundColor(Color.YELLOW);
 
 
 

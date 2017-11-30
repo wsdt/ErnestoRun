@@ -4,15 +4,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import fhkufstein.ac.at.ernestorun.Classes.ImageAdapter;
 import fhkufstein.ac.at.ernestorun.Classes.ImageAdapterBad;
 import fhkufstein.ac.at.ernestorun.Classes.ImageAdapterEnd;
 import fhkufstein.ac.at.ernestorun.Classes.ImageAdapterGood;
