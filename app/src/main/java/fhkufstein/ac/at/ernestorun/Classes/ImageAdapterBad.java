@@ -65,11 +65,11 @@ public class ImageAdapterBad extends BaseAdapter {
     // references to our images
     private Integer[] bad = {
 
-            R.drawable.bad_01, R.drawable.bad_02,
-            R.drawable.bad_03, R.drawable.bad_04,
-            R.drawable.bad_05, R.drawable.bad_06,
-            R.drawable.bad_07, R.drawable.bad_08,
-            R.drawable.bad_09, R.drawable.bad_10,
+            R.drawable.bad_1, R.drawable.bad_2,
+            R.drawable.bad_3, R.drawable.bad_4,
+            R.drawable.bad_5, R.drawable.bad_6,
+            R.drawable.bad_7, R.drawable.bad_8,
+            R.drawable.bad_9, R.drawable.bad_10,
             R.drawable.bad_11, R.drawable.bad_12,
             R.drawable.bad_13, R.drawable.bad_14,
             R.drawable.bad_15, R.drawable.bad_17,
