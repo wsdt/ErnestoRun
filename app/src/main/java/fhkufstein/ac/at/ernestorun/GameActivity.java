@@ -1,5 +1,7 @@
 package fhkufstein.ac.at.ernestorun;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.Image;
@@ -9,9 +11,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import java.util.Random;
+
+import fhkufstein.ac.at.ernestorun.Classes.Food;
 import fhkufstein.ac.at.ernestorun.Classes.Mediaplayer;
 
 
@@ -45,6 +50,10 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Food essen = new Food(this,R.drawable.bad_10);
+        RelativeLayout ll = ((RelativeLayout) findViewById(R.id.gameContent));
+        ll.addView(essen);
 
 
         //Change Background after certain values in highscore
