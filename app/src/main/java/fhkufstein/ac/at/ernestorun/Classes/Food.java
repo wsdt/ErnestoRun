@@ -1,8 +1,10 @@
 package fhkufstein.ac.at.ernestorun.Classes;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,39 +17,64 @@ public class Food extends Icon {
 
     public Food(Context context, int character) {
         super(context, character);
-        placeFood(this.X,this.Y); //startposition
+        placeFood(this.X, this.Y); //startposition
     }
 
     public Food(Context context, @Nullable AttributeSet attrs, int character) {
         super(context, attrs, character);
-        placeFood(this.X,this.Y); //startposition
+        placeFood(this.X, this.Y); //startposition
     }
 
     public Food(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int character) {
         super(context, attrs, defStyleAttr, character);
-        placeFood(this.X,this.Y); //startposition
+        placeFood(this.X, this.Y); //startposition
     }
 
     public Food(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes, int character) {
         super(context, attrs, defStyleAttr, defStyleRes, character);
-        placeFood(this.X,this.Y); //startposition
+        placeFood(this.X, this.Y); //startposition
     }
 
 
     private void placeFood(int X, int Y) {
-        //TODO: Send food from right to left until the end of the left site (if ernesto has eaten it, then HIDE or REMOVE food from display (play a sound) and let a new come.
         setX(X);
         setY(Y);
-        this.X = X;this.Y = Y; //so other classes know the position
+        Log.d("placeFood", "Executed: "+getX()+";;"+getY());
+        this.X = X;
+        this.Y = Y; //so other classes know the position
     }
 
-    public void serveFood(int speed) {
-            
+    private void serveFoodFrame() {
+        Log.d("serveFoodFrame","Executed");
+        placeFood((int) getX()-10,(int) getY());
+    }
 
+    public void serveFood(final int BRAKE) {
+        final Food FOOD = this;
+        final int X = this.X;
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (getX() > (0-sizeFactor)) {
+                    FOOD.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            FOOD.serveFoodFrame();
+                        }
+                    });
+                    try {
+                        Thread.sleep(BRAKE);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 
     public void playEatSound(Context context, int eatsound) {
-        Mediaplayer mediaPlayer = new Mediaplayer(context,eatsound);
+        Mediaplayer mediaPlayer = new Mediaplayer(context, eatsound);
         mediaPlayer.startMusik();
     }
 }

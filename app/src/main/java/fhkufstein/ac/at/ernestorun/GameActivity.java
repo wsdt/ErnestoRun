@@ -16,7 +16,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 import java.util.Random;
 
+import fhkufstein.ac.at.ernestorun.Classes.BadFood;
+import fhkufstein.ac.at.ernestorun.Classes.DieFood;
 import fhkufstein.ac.at.ernestorun.Classes.Food;
+import fhkufstein.ac.at.ernestorun.Classes.GoodFood;
 import fhkufstein.ac.at.ernestorun.Classes.Mediaplayer;
 
 
@@ -26,14 +29,19 @@ public class GameActivity extends AppCompatActivity {
     //IMPORTANT: To keep everything working you need to set the following to countVars to the Anzahl of available pictures. We start counting at 1
     public static int countBackgroundImages = 15;
     public static int countBackgroundSounds = 15;
+    public static int countGoodMeals = 26;
+    public static int countBadMeals = 27;
+    public static int countDeadlyMeals = 1;
     public static TextView greyBar;
     private int difficultyConstant = 0;
+    private RelativeLayout this_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         getSupportActionBar().hide();
+        this_layout = findViewById(R.id.gameContent);
 
         //Set Character (Ernesto is default)
          startGame();
@@ -51,9 +59,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        Food essen = new Food(this,R.drawable.bad_10);
-        RelativeLayout ll = ((RelativeLayout) findViewById(R.id.gameContent));
-        ll.addView(essen);
+        serveRandomMeal(40);
 
 
         //Change Background after certain values in highscore
@@ -88,6 +94,34 @@ public class GameActivity extends AppCompatActivity {
     private void setRandomBackground(int randomnr) {
         Log.d("BG","BG: "+randomnr);
         (findViewById(R.id.gameContent)).setBackgroundResource(getResources().getIdentifier("background_"+randomnr,"drawable",getPackageName()));
+    }
+
+    //Server MEAL ############################################
+    private void serveRandomMeal(int brake) {
+        //random.nextInt(max - min + 1) + min
+        int mealKind = r.nextInt(3-1+1)+1;
+        int mealNr = 1; Food food;
+        switch (mealKind) {
+            case 1:
+                mealNr = r.nextInt(countGoodMeals-1+1)+1;
+                Log.e("mealkind","HH"+mealNr);
+                food = new GoodFood(this,getResources().getIdentifier("good_"+mealNr,"drawable",getPackageName()));
+                break;
+            case 2:
+                mealNr = r.nextInt(countBadMeals-1+1)+1;
+                Log.e("mealkind","HH"+mealNr);
+                food = new BadFood(this,getResources().getIdentifier("bad_"+mealNr,"drawable",getPackageName()));
+                break;
+            case 3:
+                mealNr = r.nextInt(countDeadlyMeals-1+1)+1;
+                Log.e("mealkind","HH"+mealNr);
+                food = new DieFood(this,getResources().getIdentifier("dead_"+mealNr,"drawable",getPackageName()));
+                break;
+            default:food=new DieFood(this,R.drawable.dead_01);Log.e("serveRandomMeal","MealKind not found!");
+        }
+
+        this_layout.addView(food);
+        food.serveFood(brake);
     }
 
 
