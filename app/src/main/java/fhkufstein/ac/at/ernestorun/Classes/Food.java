@@ -2,14 +2,9 @@ package fhkufstein.ac.at.ernestorun.Classes;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import fhkufstein.ac.at.ernestorun.R;
 
 
 public class Food extends Icon {
@@ -72,10 +67,5 @@ public class Food extends Icon {
                 }
             }
         }).start();
-    }
-
-    public void playEatSound(Context context, int eatsound) {
-        MediaPlayer mediaPlayer = MediaPlayer.create(context, eatsound);
-        mediaPlayer.start();
     }
 }

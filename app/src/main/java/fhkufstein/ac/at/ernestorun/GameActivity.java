@@ -1,5 +1,6 @@
 package fhkufstein.ac.at.ernestorun;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -81,19 +82,14 @@ public class GameActivity extends AppCompatActivity {
 
         serveRandomMeal(40);
 
-        final Food essen = new Food(this,R.drawable.bad_10);
-        RelativeLayout ll = ((RelativeLayout) findViewById(R.id.gameContent));
-        ll.setOnClickListener(new View.OnClickListener() {
+        this_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //if anweisung die überprüft, ob sich das item an der richtigen position befindet
-                essen.playEatSound(getApplicationContext(), R.raw.eatsound);
+                playEatSound(getApplicationContext(), R.raw.eatsound);
 
             }
         });
-
-        ll.addView(essen);
 
 
         //Change Background after certain values in highscore
@@ -165,6 +161,10 @@ public class GameActivity extends AppCompatActivity {
         mediaPlayer = new Mediaplayer(this,getResources().getIdentifier("bgmusik_"+randomnr,"raw",getPackageName()));
         mediaPlayer.startMusik();
 
+    }
+    public void playEatSound(Context context, int eatsound) {
+        MediaPlayer mediaPlayer = MediaPlayer.create(context, eatsound);
+        mediaPlayer.start();
     }
 
 
