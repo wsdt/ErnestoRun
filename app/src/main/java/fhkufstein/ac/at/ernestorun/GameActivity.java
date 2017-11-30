@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+
 import java.util.Random;
 
 import fhkufstein.ac.at.ernestorun.Classes.BadFood;
@@ -37,6 +38,9 @@ public class GameActivity extends AppCompatActivity {
     public static TextView greyBar;
     private int difficultyConstant = 0;
     private RelativeLayout this_layout;
+    public int level = 1;
+    private int levelMax;
+    private int levelMin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,22 +56,10 @@ public class GameActivity extends AppCompatActivity {
         underline.setBackgroundColor(Color.YELLOW);
 
 
-
-        /*rl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            ImageButton button1 = findViewById(R.id.character);
-            button1.setBackgroundResource(R.drawable.snail1);
-
-
-
-            }
-        });*/
-
         //Set Character (Ernesto is default)
-         startGame();
+        startGame();
 
-         //Grey Bar Listener
+        //Grey Bar Listener
         ((Switch) findViewById(R.id.switchGreyBar)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -80,7 +72,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        serveRandomMeal(40);
+        serveRandomMeals(3000);
 
         this_layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +93,7 @@ public class GameActivity extends AppCompatActivity {
         super.onPause();
         mediaPlayer.pauseMusik();
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -110,7 +103,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void changeLevel() {
         //IMPORTANT: Only images/sounds will be loaded which are below the max nr of the other one (img_1 will be called with sound_1)
-        int randomnr = r.nextInt(((countBackgroundImages > countBackgroundSounds ? countBackgroundSounds : countBackgroundImages)-1)+1)+1;
+        int randomnr = r.nextInt(((countBackgroundImages > countBackgroundSounds ? countBackgroundSounds : countBackgroundImages) - 1) + 1) + 1;
         setRandomBackground(randomnr);
         setRandomBackgroundMusik(randomnr);
     }
@@ -122,32 +115,54 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void setRandomBackground(int randomnr) {
-        Log.d("BG","BG: "+randomnr);
-        (findViewById(R.id.gameContent)).setBackgroundResource(getResources().getIdentifier("background_"+randomnr,"drawable",getPackageName()));
+        Log.d("BG", "BG: " + randomnr);
+        (findViewById(R.id.gameContent)).setBackgroundResource(getResources().getIdentifier("background_" + randomnr, "drawable", getPackageName()));
     }
 
     //Server MEAL ############################################
-    private void serveRandomMeal(int brake) {
-        //random.nextInt(max - min + 1) + min
-        int mealKind = r.nextInt(3-1+1)+1;
-        int mealNr = 1; Food food;
-        switch (mealKind) {
+    private void serveRandomMeals(final int WAITUNTILNEXTFOOD) {
+        switch (level) {  //the lower the faster the food icons
             case 1:
-                mealNr = r.nextInt(countGoodMeals-1+1)+1;
-                Log.e("mealkind","HH"+mealNr);
-                food = new GoodFood(this,getResources().getIdentifier("good_"+mealNr,"drawable",getPackageName()));
+                levelMax = 100;
+                levelMin = 80;
                 break;
             case 2:
-                mealNr = r.nextInt(countBadMeals-1+1)+1;
-                Log.e("mealkind","HH"+mealNr);
-                food = new BadFood(this,getResources().getIdentifier("bad_"+mealNr,"drawable",getPackageName()));
+                levelMax = 90;
+                levelMin = 70;
+                break;
+            default:
+                Log.e("LEVEL", "Level does not exist!");
+        }
+
+        //while(true) {
+            serveRandomMeal(r.nextInt(levelMax - levelMin + 1) + 1);
+        //}
+
+    }
+
+    private void serveRandomMeal(int brake) {
+        int mealKind = r.nextInt(3 - 1 + 1) + 1;
+        int mealNr = 1;
+        Food food;
+        switch (mealKind) {
+            case 1:
+                mealNr = r.nextInt(countGoodMeals - 1 + 1) + 1;
+                Log.e("mealkind", "HH" + mealNr);
+                food = new GoodFood(this, getResources().getIdentifier("good_" + mealNr, "drawable", getPackageName()));
+                break;
+            case 2:
+                mealNr = r.nextInt(countBadMeals - 1 + 1) + 1;
+                Log.e("mealkind", "HH" + mealNr);
+                food = new BadFood(this, getResources().getIdentifier("bad_" + mealNr, "drawable", getPackageName()));
                 break;
             case 3:
-                mealNr = r.nextInt(countDeadlyMeals-1+1)+1;
-                Log.e("mealkind","HH"+mealNr);
-                food = new DieFood(this,getResources().getIdentifier("dead_"+mealNr,"drawable",getPackageName()));
+                mealNr = r.nextInt(countDeadlyMeals - 1 + 1) + 1;
+                Log.e("mealkind", "HH" + mealNr);
+                food = new DieFood(this, getResources().getIdentifier("dead_" + mealNr, "drawable", getPackageName()));
                 break;
-            default:food=new DieFood(this,R.drawable.dead_01);Log.e("serveRandomMeal","MealKind not found!");
+            default:
+                food = new DieFood(this, R.drawable.dead_01);
+                Log.e("serveRandomMeal", "MealKind not found!");
         }
 
         this_layout.addView(food);
@@ -157,11 +172,12 @@ public class GameActivity extends AppCompatActivity {
 
     //MUSIK ##################################################
     private void setRandomBackgroundMusik(int randomnr) {
-        Log.d("MU","MU: "+randomnr);
-        mediaPlayer = new Mediaplayer(this,getResources().getIdentifier("bgmusik_"+randomnr,"raw",getPackageName()));
+        Log.d("MU", "MU: " + randomnr);
+        mediaPlayer = new Mediaplayer(this, getResources().getIdentifier("bgmusik_" + randomnr, "raw", getPackageName()));
         mediaPlayer.startMusik();
 
     }
+
     public void playEatSound(Context context, int eatsound) {
         MediaPlayer mediaPlayer = MediaPlayer.create(context, eatsound);
         mediaPlayer.start();
@@ -170,7 +186,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void startGame() {
         //Create Mediaplayer before changing level
-        setPlayer(getIntent().getIntExtra("character",R.drawable.animals_1));
+        setPlayer(getIntent().getIntExtra("character", R.drawable.animals_1));
         changeLevel();
     }
 
