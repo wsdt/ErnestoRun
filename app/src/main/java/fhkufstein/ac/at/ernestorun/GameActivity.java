@@ -24,7 +24,7 @@ public class GameActivity extends AppCompatActivity {
     public static Random r = new Random();
     public static Mediaplayer mediaPlayer;
     //IMPORTANT: To keep everything working you need to set the following to countVars to the Anzahl of available pictures. We start counting at 1
-    public static int countBackgroundImages = 10;
+    public static int countBackgroundImages = 15;
     public static int countBackgroundSounds = 15;
     public static TextView greyBar;
     private int difficultyConstant = 0;
