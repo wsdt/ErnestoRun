@@ -17,7 +17,7 @@ import fhkufstein.ac.at.ernestorun.R;
 
 
 public abstract class Icon extends View {
-    protected float sizeFactor;
+    public float sizeFactor;
     private Bitmap character;
     private Matrix m = new Matrix();
 

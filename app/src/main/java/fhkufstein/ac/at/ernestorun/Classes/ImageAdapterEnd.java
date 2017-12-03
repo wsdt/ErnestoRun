@@ -13,15 +13,6 @@ import android.widget.ImageView;
 
 import fhkufstein.ac.at.ernestorun.R;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-
-import fhkufstein.ac.at.ernestorun.R;
-
 /**
  * Created by marti on 25.11.2017.
  */
@@ -66,7 +57,7 @@ public class ImageAdapterEnd extends BaseAdapter {
     // references to our images
 
     private Integer [] end = {
-            R.drawable.dead_01
+            R.drawable.dead_1
     };
 
 
