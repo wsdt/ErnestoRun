@@ -14,6 +14,7 @@ public class Food extends Icon {
     public int Y = 725;
     private GameActivity gameActivity;
     private LinearLayout highscore;
+    public Thread threadServeFood;
 
     public Food(Context context, int character) {
         super(context, character);
@@ -50,27 +51,39 @@ public class Food extends Icon {
     }
 
     public void serveFood(final int BRAKE) {
-        final Food FOOD = getGameActivity().determineNextFood();
+        //final Food FOOD = this;//getGameActivity().determineNextFood();
 
-        new Thread(new Runnable() {
-            Food FOODi = FOOD;
+        threadServeFood = new Thread(new Runnable() {
+            //Food FOODi = FOOD;
+            final Food FOOD = getGameActivity().currentFood;
 
             @Override
             public void run() {
+                //Wait x Milliseconds to produce new food
+                try {
+                    Thread.sleep(BRAKE*10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 while (FOOD.getX() > (0-sizeFactor)) {
-                    Log.e("serveFood","While started: "+FOOD.getX()+">"+(0-sizeFactor));
+                    Log.d("serveFood","While started: "+FOOD.getX()+">"+(0-sizeFactor));
                     FOOD.post(new Runnable() {
                         @Override
                         public void run() {
-                            Log.e("serveFood","run() started");
+                            Log.d("serveFood","run() started");
                             FOOD.serveFoodFrame();
                             if (FOOD.getX() <= (0-sizeFactor)) {
                                 Log.e("serveFood","performClick started: "+FOOD.getX()+";"+(0-sizeFactor));
-                                //getHighscore().performClick();
-                                serveFood(BRAKE);
+
+                                /*Only execute once (new meal)
+                                getGameActivity().serveRandomMeal(BRAKE);
+                                Thread.currentThread().interrupt();
+                                return;*/
                             }
                         }
                     });
+                    //Wait brake milliseconds to repositionate food
                     try {
                         Thread.sleep(BRAKE);
                     } catch (InterruptedException e) {
@@ -78,7 +91,8 @@ public class Food extends Icon {
                     }
                 }
             }
-        }).start();
+        });
+        threadServeFood.start();
     }
 
     public void serveFoods(final int BRAKE, final int WAITUNTILNEXTFOOD) {
