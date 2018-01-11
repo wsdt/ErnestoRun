@@ -43,7 +43,7 @@ public class GameActivity extends AppCompatActivity {
     public Food currentFood;
     public int score = 0;
     private TextView scoreTextView;
-    private final int difficultyValue = 20; //the higher the easier the game
+    private final int difficultyValue = 100; //the higher the easier the game
 
 
     @Override
@@ -92,7 +92,6 @@ public class GameActivity extends AppCompatActivity {
 
 
         //Change Background after certain values in highscore
-        //TODO: CALL METHOD changeLevel() when item gets eaten, so a method in item classes have to call it.
         startAutomaticLevelIncrease();
     }
 
@@ -110,8 +109,8 @@ public class GameActivity extends AppCompatActivity {
                         });
                     }
                 },
-                30000 //wait for first time
-                , 30000
+                0 //wait for first time
+                , 60000
         );
     }
 
@@ -390,7 +389,7 @@ public class GameActivity extends AppCompatActivity {
     private void startGame() {
         //Create Mediaplayer before changing level
         setPlayer(getIntent().getIntExtra("character", R.drawable.animals_1));
-        changeLevel();
+        //changeLevel();
 
         //Grey Bar Listener
         ((Switch) findViewById(R.id.switchGreyBar)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
