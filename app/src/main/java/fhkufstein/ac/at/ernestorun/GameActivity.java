@@ -72,6 +72,17 @@ public class GameActivity extends AppCompatActivity {
                     serveRandomMeal(r.nextInt(levelMax - levelMin + 1) + 1);
                 } else {
                     //TODO: if anweisung die überprüft, ob sich das item an der richtigen position befindet
+                    if (currentFood.getX() >= findViewById(R.id.underline).getX()-findViewById(R.id.underline).getWidth() && currentFood.getX() <= findViewById(R.id.underline).getX()) {
+                        if (currentFood instanceof GoodFood) {
+                            updateScore(1);
+                        }
+                        else if (currentFood instanceof BadFood) {
+                            updateScore(-1);
+                        }
+                        else if (currentFood instanceof DieFood) {
+                            endGame();
+                        }
+                    }
                     playEatSound(getApplicationContext(), R.raw.eatsound);
                     //this.currentfood.didHeAteit() in if usw.
                 }
@@ -404,7 +415,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void updateScoreTextView(int score){
 
-        scoreTextView.setText(score);
+        scoreTextView.setText(score+"");
 
     }
 
