@@ -43,11 +43,7 @@ public class GameActivity extends AppCompatActivity {
     public Food currentFood;
     public int score = 0;
     private TextView scoreTextView;
-<<<<<<< HEAD
     private final int difficultyValue = 200; //the higher the easier the game
-=======
-    private final int difficultyValue = 20; //the higher the easier the game
->>>>>>> c61069dec206746c84090863454cdfb03f92e9cd
 
 
     @Override
