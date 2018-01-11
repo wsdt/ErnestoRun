@@ -1,6 +1,7 @@
 package fhkufstein.ac.at.ernestorun;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
@@ -39,6 +40,8 @@ public class GameActivity extends AppCompatActivity {
     private int levelMax;
     private int levelMin;
     public Food currentFood;
+    public int score = 0;
+    private TextView scoreTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,8 @@ public class GameActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         this_layout = findViewById(R.id.gameContent);
+        scoreTextView = (TextView)findViewById(R.id.HighscorePoints);
+
 
 
         //Set Character (Ernesto is default)
@@ -366,5 +371,25 @@ public class GameActivity extends AppCompatActivity {
         //Set reachable eat area
         TextView underline = findViewById(R.id.underline);
         underline.setBackgroundColor(Color.YELLOW);
+    }
+
+    private void updateScore(int points){
+
+        score = score + points;
+        updateScoreTextView(score);
+
+    }
+
+
+    private void updateScoreTextView(int score){
+
+        scoreTextView.setText(score);
+
+    }
+
+    private void endGame(){
+        Intent intent = new Intent(this, EndActivity.class);
+        intent.putExtra("score", score);
+        startActivity(intent);
     }
 }
