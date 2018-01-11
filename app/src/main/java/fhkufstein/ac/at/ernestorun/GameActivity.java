@@ -35,10 +35,11 @@ public class GameActivity extends AppCompatActivity {
     public static int countDeadlyMeals = 1;
     public static TextView greyBar;
     private RelativeLayout this_layout;
-    public int level = 1;
+    public int level = 0;
     private int levelMax;
     private int levelMin;
     public Food currentFood;
+    private final int difficultyValue = 20; //the higher the easier the game
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class GameActivity extends AppCompatActivity {
                 } else {
                     //TODO: if anweisung die überprüft, ob sich das item an der richtigen position befindet
                     playEatSound(getApplicationContext(), R.raw.eatsound);
+                    //this.currentfood.didHeAteit() in if usw.
                 }
             }
         });
@@ -72,6 +74,20 @@ public class GameActivity extends AppCompatActivity {
 
         //Change Background after certain values in highscore
         //TODO: CALL METHOD changeLevel() when item gets eaten, so a method in item classes have to call it.
+        startAutomaticLevelIncrease();
+    }
+
+    private void startAutomaticLevelIncrease() {
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        changeLevel(); //increase Level after period of time
+                    }
+                },
+                30000 //wait for first time
+                , 30000
+        );
     }
 
     @Override
@@ -100,6 +116,7 @@ public class GameActivity extends AppCompatActivity {
         int randomnr = r.nextInt(((countBackgroundImages > countBackgroundSounds ? countBackgroundSounds : countBackgroundImages) - 1) + 1) + 1;
         setRandomBackground(randomnr);
         setRandomBackgroundMusik(randomnr);
+        this.level++; //increase level
         setLevelProperties();
     }
 
@@ -267,8 +284,8 @@ public class GameActivity extends AppCompatActivity {
                     default:
                         Log.e("LEVEL", "Level does not exist!");
                 }
-                instance.levelMin = levelMin;
-                instance.levelMax = levelMax;
+                instance.levelMin = (levelMin+difficultyValue);
+                instance.levelMax = (levelMax+difficultyValue);
             }
         }).start();
     }
@@ -316,14 +333,10 @@ public class GameActivity extends AppCompatActivity {
     private void setRandomBackgroundMusik(final int randomnr) {
         final GameActivity instance = this;
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Log.d("MU", "MU: " + randomnr);
-                GameActivity.mediaPlayer = new Mediaplayer(instance, getResources().getIdentifier("bgmusik_" + randomnr, "raw", getPackageName()));
-                GameActivity.mediaPlayer.startMusik();
-            }
-        }).start();
+        Log.d("MU", "MU: " + randomnr);
+        GameActivity.mediaPlayer = new Mediaplayer(instance, getResources().getIdentifier("bgmusik_" + randomnr, "raw", getPackageName()));
+        GameActivity.mediaPlayer.startMusik();
+
     }
 
     public void playEatSound(final Context context, final int eatsound) {
