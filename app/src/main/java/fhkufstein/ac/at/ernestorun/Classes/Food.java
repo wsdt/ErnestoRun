@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import fhkufstein.ac.at.ernestorun.GameActivity;
@@ -49,6 +50,10 @@ public class Food extends Icon {
     private void serveFoodFrame() {
         Log.d("serveFoodFrame","Executed");
         setX((int) getX()-10); //reducing this number makes the food faster. Pease ONLY adapt the speed of food with the Thread.sleep property in serveFood()
+    }
+
+    private void removeFood() {
+        this.setVisibility(View.GONE);
     }
 
     public void serveFood(final int BRAKE) {
