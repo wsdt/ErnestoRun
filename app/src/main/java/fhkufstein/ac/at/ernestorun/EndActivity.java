@@ -30,7 +30,7 @@ public class EndActivity extends AppCompatActivity {
 
         if(getIntent().hasExtra("score") == true){
 
-            long score = getIntent().getExtras().getLong("score");
+            int score = getIntent().getExtras().getInt("score");
 
             String textübergabe = "Du hast " + score + " Punkte erreicht.";
 

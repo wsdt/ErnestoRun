@@ -71,12 +71,10 @@ public class GameActivity extends AppCompatActivity {
                     Log.e("onClickLayout", "X: " + currentFood.getX() + "<=" + (0 - currentFood.sizeFactor));
                     serveRandomMeal(r.nextInt(levelMax - levelMin + 1) + 1);
                 } else {
-                    //TODO: if anweisung die überprüft, ob sich das item an der richtigen position befindet
-                    if (currentFood.getX() >= findViewById(R.id.underline).getX()-findViewById(R.id.underline).getWidth() && currentFood.getX() <= findViewById(R.id.underline).getX()) {
+                    if (currentFood.getX() >= findViewById(R.id.underline).getX()-findViewById(R.id.underline).getWidth() && currentFood.getX() <= findViewById(R.id.underline).getX()+findViewById(R.id.underline).getWidth()/2) {
                         if (currentFood instanceof GoodFood) {
                             updateScore(1);
                             currentFood.removeFood();
-
                         }
                         else if (currentFood instanceof BadFood) {
                             updateScore(-1);

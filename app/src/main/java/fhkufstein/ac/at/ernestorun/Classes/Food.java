@@ -53,9 +53,9 @@ public class Food extends Icon {
     }
 
 
-    private void removeFood() {
+    public void removeFood() {
         try {
-            this.setVisibility(View.GONE);
+            this.setVisibility(View.INVISIBLE);
         } catch (Exception e) {
             e.printStackTrace();
         }
