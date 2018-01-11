@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,8 +67,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Wenn Essen sichtbar dann kann nur gegessen werden, ansonsten wird beim Klicken Neues essen serviert
-                if (currentFood.getX() <= (0-currentFood.sizeFactor)) {
-                    Log.e("onClickLayout","X: "+currentFood.getX()+"<="+(0-currentFood.sizeFactor));
+                if (currentFood.getX() <= (0 - currentFood.sizeFactor)) {
+                    Log.e("onClickLayout", "X: " + currentFood.getX() + "<=" + (0 - currentFood.sizeFactor));
                     serveRandomMeal(r.nextInt(levelMax - levelMin + 1) + 1);
                 } else {
                     //TODO: if anweisung die überprüft, ob sich das item an der richtigen position befindet
@@ -84,11 +85,17 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void startAutomaticLevelIncrease() {
-        new java.util.Timer().schedule(
+        new java.util.Timer().scheduleAtFixedRate(
                 new java.util.TimerTask() {
                     @Override
                     public void run() {
-                        changeLevel(); //increase Level after period of time
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                changeLevel(); //increase Level after period of time
+                                Log.d("startAutomaticLvlInc.", "Increased LEVEL automatically.");
+                            }
+                        });
                     }
                 },
                 30000 //wait for first time
@@ -102,7 +109,7 @@ public class GameActivity extends AppCompatActivity {
         try {
             GameActivity.mediaPlayer.pauseMusik();
         } catch (NullPointerException e) {
-            Log.e("onPause","NullpointerException - Mediaplayer");
+            Log.e("onPause", "NullpointerException - Mediaplayer");
         }
     }
 
@@ -112,7 +119,7 @@ public class GameActivity extends AppCompatActivity {
         try {
             GameActivity.mediaPlayer.resumeMusik();
         } catch (NullPointerException e) {
-            Log.e("onResume","NullpointerException - Mediaplayer");
+            Log.e("onResume", "NullpointerException - Mediaplayer");
         }
     }
 
@@ -145,7 +152,7 @@ public class GameActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.e("setLevelProperties","Current-Level: "+level);
+                Log.e("setLevelProperties", "Current-Level: " + level);
                 switch (level) {  //the lower the faster the food icons
                     case 1:
                         levelMax = 150;
@@ -290,8 +297,8 @@ public class GameActivity extends AppCompatActivity {
                     default:
                         Log.e("LEVEL", "Level does not exist!");
                 }
-                instance.levelMin = (levelMin+difficultyValue);
-                instance.levelMax = (levelMax+difficultyValue);
+                instance.levelMin = (levelMin + difficultyValue);
+                instance.levelMax = (levelMax + difficultyValue);
             }
         }).start();
     }
