@@ -43,7 +43,11 @@ public class GameActivity extends AppCompatActivity {
     public Food currentFood;
     public int score = 0;
     private TextView scoreTextView;
+<<<<<<< HEAD
     private final int difficultyValue = 200; //the higher the easier the game
+=======
+    private final int difficultyValue = 20; //the higher the easier the game
+>>>>>>> c61069dec206746c84090863454cdfb03f92e9cd
 
 
     @Override
@@ -89,6 +93,7 @@ public class GameActivity extends AppCompatActivity {
 
 
         //Change Background after certain values in highscore
+        //TODO: CALL METHOD changeLevel() when item gets eaten, so a method in item classes have to call it.
         startAutomaticLevelIncrease();
     }
 
@@ -106,8 +111,8 @@ public class GameActivity extends AppCompatActivity {
                         });
                     }
                 },
-                0 //wait for first time
-                , 60000
+                30000 //wait for first time
+                , 30000
         );
     }
 
@@ -382,7 +387,7 @@ public class GameActivity extends AppCompatActivity {
     private void startGame() {
         //Create Mediaplayer before changing level
         setPlayer(getIntent().getIntExtra("character", R.drawable.animals_1));
-        //changeLevel();
+        changeLevel();
 
         //Grey Bar Listener
         ((Switch) findViewById(R.id.switchGreyBar)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -406,6 +411,7 @@ public class GameActivity extends AppCompatActivity {
 
         score = score + points;
         updateScoreTextView(score);
+        checkScore(score);
 
     }
 
@@ -422,5 +428,15 @@ public class GameActivity extends AppCompatActivity {
         intent.putExtra("score", score);
         finish();
         startActivity(intent);
+    }
+
+    private void checkScore(int score){
+
+        if (score < 5){
+            endGame();
+        } else {
+            Log.i("info", "Unter fünft Punkte");
+        }
+
     }
 }
