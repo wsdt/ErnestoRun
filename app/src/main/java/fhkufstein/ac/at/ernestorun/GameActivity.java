@@ -408,6 +408,8 @@ public class GameActivity extends AppCompatActivity {
 
     private void updateScoreTextView(int score){
 
+        
+
         scoreTextView.setText(score);
 
     }
