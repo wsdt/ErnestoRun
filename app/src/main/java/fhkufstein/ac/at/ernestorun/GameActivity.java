@@ -434,7 +434,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void checkScore(int score){
 
-        if (score < 5){
+        if (score < -5){
             endGame();
         } else {
             Log.i("info", "Unter fünft Punkte");
