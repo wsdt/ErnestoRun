@@ -437,7 +437,7 @@ public class GameActivity extends AppCompatActivity {
         if (score < -5){
             endGame();
         } else {
-            Log.i("info", "Unter fünft Punkte");
+            Log.i("info", "Unter fünf Punkte");
         }
 
     }
