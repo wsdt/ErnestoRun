@@ -75,9 +75,11 @@ public class GameActivity extends AppCompatActivity {
                     if (currentFood.getX() >= findViewById(R.id.underline).getX()-findViewById(R.id.underline).getWidth() && currentFood.getX() <= findViewById(R.id.underline).getX()) {
                         if (currentFood instanceof GoodFood) {
                             updateScore(1);
+                            currentFood.removeFood();
                         }
                         else if (currentFood instanceof BadFood) {
                             updateScore(-1);
+                            currentFood.removeFood();
                         }
                         else if (currentFood instanceof DieFood) {
                             endGame();
