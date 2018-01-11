@@ -92,7 +92,6 @@ public class GameActivity extends AppCompatActivity {
 
 
         //Change Background after certain values in highscore
-        //TODO: CALL METHOD changeLevel() when item gets eaten, so a method in item classes have to call it.
         startAutomaticLevelIncrease();
     }
 
