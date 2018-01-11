@@ -52,7 +52,7 @@ public class Food extends Icon {
         setX((int) getX()-10); //reducing this number makes the food faster. Pease ONLY adapt the speed of food with the Thread.sleep property in serveFood()
     }
 
-    private void removeFood() {
+    public void removeFood() {
         this.setVisibility(View.GONE);
     }
 
