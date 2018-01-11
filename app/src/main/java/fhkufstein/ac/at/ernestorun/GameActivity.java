@@ -43,7 +43,7 @@ public class GameActivity extends AppCompatActivity {
     public Food currentFood;
     public int score = 0;
     private TextView scoreTextView;
-    private final int difficultyValue = 20; //the higher the easier the game
+    private final int difficultyValue = 200; //the higher the easier the game
 
 
     @Override
@@ -53,8 +53,7 @@ public class GameActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         this_layout = findViewById(R.id.gameContent);
-        scoreTextView = (TextView)findViewById(R.id.HighscorePoints);
-
+        scoreTextView = (TextView) findViewById(R.id.HighscorePoints);
 
 
         //Set Character (Ernesto is default)
@@ -71,15 +70,14 @@ public class GameActivity extends AppCompatActivity {
                     Log.e("onClickLayout", "X: " + currentFood.getX() + "<=" + (0 - currentFood.sizeFactor));
                     serveRandomMeal(r.nextInt(levelMax - levelMin + 1) + 1);
                 } else {
-                    //TODO: if anweisung die überprüft, ob sich das item an der richtigen position befindet
-                    if (currentFood.getX() >= findViewById(R.id.underline).getX()-findViewById(R.id.underline).getWidth() && currentFood.getX() <= findViewById(R.id.underline).getX()) {
+                    if (currentFood.getX() >= findViewById(R.id.underline).getX() - findViewById(R.id.underline).getWidth() && currentFood.getX() <= findViewById(R.id.underline).getX() + findViewById(R.id.underline).getWidth() / 2) {
                         if (currentFood instanceof GoodFood) {
                             updateScore(1);
-                        }
-                        else if (currentFood instanceof BadFood) {
+                            currentFood.removeFood();
+                        } else if (currentFood instanceof BadFood) {
                             updateScore(-1);
-                        }
-                        else if (currentFood instanceof DieFood) {
+                            currentFood.removeFood();
+                        } else if (currentFood instanceof DieFood) {
                             endGame();
                         }
                     }
@@ -141,7 +139,7 @@ public class GameActivity extends AppCompatActivity {
         setRandomBackground(randomnr);
         setRandomBackgroundMusik(randomnr);
         this.level++; //increase level
-        ((TextView) findViewById(R.id.levelLabel)).setText("Level "+this.level);
+        ((TextView) findViewById(R.id.levelLabel)).setText("Level " + this.level);
         setLevelProperties();
     }
 
@@ -161,158 +159,154 @@ public class GameActivity extends AppCompatActivity {
         final int level = this.level;
         final GameActivity instance = this;
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Log.e("setLevelProperties", "Current-Level: " + level);
-                switch (level) {  //the lower the faster the food icons
-                    case 1:
-                        levelMax = 150;
-                        levelMin = 140;
-                        break;
-                    case 2:
-                        levelMax = 150;
-                        levelMin = 130;
-                        break;
-                    case 3:
-                        levelMax = 140;
-                        levelMin = 130;
-                        break;
-                    case 4:
-                        levelMax = 140;
-                        levelMin = 120;
-                        break;
-                    case 5:
-                        levelMax = 130;
-                        levelMin = 120;
-                        break;
-                    case 6:
-                        levelMax = 130;
-                        levelMin = 110;
-                        break;
-                    case 7:
-                        levelMax = 120;
-                        levelMin = 110;
-                        break;
-                    case 8:
-                        levelMax = 120;
-                        levelMin = 100;
-                        break;
-                    case 9:
-                        levelMax = 110;
-                        levelMin = 100;
-                        break;
-                    case 10:
-                        levelMax = 110;
-                        levelMin = 90;
-                        break;
-                    case 11:
-                        levelMax = 100;
-                        levelMin = 90;
-                        break;
-                    case 12:
-                        levelMax = 100;
-                        levelMin = 80;
-                        break;
-                    case 13:
-                        levelMax = 90;
-                        levelMin = 80;
-                        break;
-                    case 14:
-                        levelMax = 90;
-                        levelMin = 70;
-                        break;
-                    case 15:
-                        levelMax = 85;
-                        levelMin = 70;
-                        break;
-                    case 16:
-                        levelMax = 80;
-                        levelMin = 70;
-                        break;
-                    case 17:
-                        levelMax = 75;
-                        levelMin = 65;
-                        break;
-                    case 18:
-                        levelMax = 75;
-                        levelMin = 60;
-                        break;
-                    case 19:
-                        levelMax = 70;
-                        levelMin = 55;
-                        break;
-                    case 20:
-                        levelMax = 65;
-                        levelMin = 55;
-                        break;
-                    case 21:
-                        levelMax = 60;
-                        levelMin = 50;
-                        break;
-                    case 22:
-                        levelMax = 60;
-                        levelMin = 45;
-                        break;
-                    case 23:
-                        levelMax = 55;
-                        levelMin = 45;
-                        break;
-                    case 24:
-                        levelMax = 55;
-                        levelMin = 40;
-                        break;
-                    case 25:
-                        levelMax = 50;
-                        levelMin = 40;
-                        break;
-                    case 26:
-                        levelMax = 50;
-                        levelMin = 35;
-                        break;
-                    case 27:
-                        levelMax = 45;
-                        levelMin = 35;
-                        break;
-                    case 28:
-                        levelMax = 45;
-                        levelMin = 30;
-                        break;
-                    case 29:
-                        levelMax = 40;
-                        levelMin = 30;
-                        break;
-                    case 30:
-                        levelMax = 40;
-                        levelMin = 25;
-                        break;
-                    case 31:
-                        levelMax = 35;
-                        levelMin = 25;
-                        break;
-                    case 32:
-                        levelMax = 30;
-                        levelMin = 25;
-                        break;
-                    case 33:
-                        levelMax = 30;
-                        levelMin = 20;
-                        break;
-                    case 34:
-                        levelMax = 25;
-                        levelMin = 20;
-                        break;
-                    case 35:
-                        levelMax = 20;
-                        levelMin = 15; //do not go below 15 (i think otherwise we could get exceptions)
-                        break;
-                    default:
-                        Log.e("LEVEL", "Level does not exist!");
-                }
-                instance.levelMin = (levelMin + difficultyValue);
-                instance.levelMax = (levelMax + difficultyValue);
-            }
-        }).start();
+
+        Log.e("setLevelProperties", "Current-Level: " + level);
+        switch (level) {  //the lower the faster the food icons
+            case 1:
+                levelMax = 150;
+                levelMin = 140;
+                break;
+            case 2:
+                levelMax = 150;
+                levelMin = 130;
+                break;
+            case 3:
+                levelMax = 140;
+                levelMin = 130;
+                break;
+            case 4:
+                levelMax = 140;
+                levelMin = 120;
+                break;
+            case 5:
+                levelMax = 130;
+                levelMin = 120;
+                break;
+            case 6:
+                levelMax = 130;
+                levelMin = 110;
+                break;
+            case 7:
+                levelMax = 120;
+                levelMin = 110;
+                break;
+            case 8:
+                levelMax = 120;
+                levelMin = 100;
+                break;
+            case 9:
+                levelMax = 110;
+                levelMin = 100;
+                break;
+            case 10:
+                levelMax = 110;
+                levelMin = 90;
+                break;
+            case 11:
+                levelMax = 100;
+                levelMin = 90;
+                break;
+            case 12:
+                levelMax = 100;
+                levelMin = 80;
+                break;
+            case 13:
+                levelMax = 90;
+                levelMin = 80;
+                break;
+            case 14:
+                levelMax = 90;
+                levelMin = 70;
+                break;
+            case 15:
+                levelMax = 85;
+                levelMin = 70;
+                break;
+            case 16:
+                levelMax = 80;
+                levelMin = 70;
+                break;
+            case 17:
+                levelMax = 75;
+                levelMin = 65;
+                break;
+            case 18:
+                levelMax = 75;
+                levelMin = 60;
+                break;
+            case 19:
+                levelMax = 70;
+                levelMin = 55;
+                break;
+            case 20:
+                levelMax = 65;
+                levelMin = 55;
+                break;
+            case 21:
+                levelMax = 60;
+                levelMin = 50;
+                break;
+            case 22:
+                levelMax = 60;
+                levelMin = 45;
+                break;
+            case 23:
+                levelMax = 55;
+                levelMin = 45;
+                break;
+            case 24:
+                levelMax = 55;
+                levelMin = 40;
+                break;
+            case 25:
+                levelMax = 50;
+                levelMin = 40;
+                break;
+            case 26:
+                levelMax = 50;
+                levelMin = 35;
+                break;
+            case 27:
+                levelMax = 45;
+                levelMin = 35;
+                break;
+            case 28:
+                levelMax = 45;
+                levelMin = 30;
+                break;
+            case 29:
+                levelMax = 40;
+                levelMin = 30;
+                break;
+            case 30:
+                levelMax = 40;
+                levelMin = 25;
+                break;
+            case 31:
+                levelMax = 35;
+                levelMin = 25;
+                break;
+            case 32:
+                levelMax = 30;
+                levelMin = 25;
+                break;
+            case 33:
+                levelMax = 30;
+                levelMin = 20;
+                break;
+            case 34:
+                levelMax = 25;
+                levelMin = 20;
+                break;
+            case 35:
+                levelMax = 20;
+                levelMin = 15; //do not go below 15 (i think otherwise we could get exceptions)
+                break;
+            default:
+                Log.e("LEVEL", "Level does not exist!");
+        }
+        this.levelMin += this.difficultyValue;
+        this.levelMax += this.difficultyValue;
     }
 
 
@@ -409,7 +403,7 @@ public class GameActivity extends AppCompatActivity {
         underline.setBackgroundColor(Color.YELLOW);
     }
 
-    private void updateScore(int points){
+    private void updateScore(int points) {
 
         score = score + points;
         updateScoreTextView(score);
@@ -418,14 +412,14 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-    private void updateScoreTextView(int score){
+    private void updateScoreTextView(int score) {
 
-        scoreTextView.setText(score+"");
+        scoreTextView.setText(score + "");
 
 
     }
 
-    private void endGame(){
+    private void endGame() {
         Intent intent = new Intent(this, EndActivity.class);
         intent.putExtra("score", score);
         finish();
