@@ -404,6 +404,7 @@ public class GameActivity extends AppCompatActivity {
     private void endGame(){
         Intent intent = new Intent(this, EndActivity.class);
         intent.putExtra("score", score);
+        finish();
         startActivity(intent);
     }
 }

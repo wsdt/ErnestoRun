@@ -29,4 +29,13 @@
         android:text="Punkte"
         android:textColor="@android:color/background_dark"
         android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btnBackToStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp"
+        android:text="Zurück zum Hauptmenü" />
 </RelativeLayout>
