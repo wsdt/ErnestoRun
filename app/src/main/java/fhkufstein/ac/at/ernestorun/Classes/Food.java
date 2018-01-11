@@ -37,6 +37,7 @@ public class Food extends Icon {
     }
 
 
+
     private void placeFood(int X, int Y) {
         setX(X);
         setY(Y);
