@@ -424,6 +424,7 @@ public class GameActivity extends AppCompatActivity {
 
         scoreTextView.setText(score+"");
 
+
     }
 
     private void endGame(){
