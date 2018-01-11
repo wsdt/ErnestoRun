@@ -53,7 +53,11 @@ public class Food extends Icon {
     }
 
     private void removeFood() {
-        this.setVisibility(View.GONE);
+        try {
+            this.setVisibility(View.GONE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void serveFood(final int BRAKE) {
