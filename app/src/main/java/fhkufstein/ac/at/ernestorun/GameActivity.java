@@ -61,7 +61,7 @@ public class GameActivity extends AppCompatActivity {
 
 
         //Serve Meals or Eat Meals ----------------------------------------------------------
-        //serveRandomMeal(r.nextInt(levelMax - levelMin + 1) + 1); //first run essential (Nullpointerexception)
+        serveRandomMeal(r.nextInt(levelMax - levelMin + 1) + 1); //first run essential (Nullpointerexception)
         this_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
