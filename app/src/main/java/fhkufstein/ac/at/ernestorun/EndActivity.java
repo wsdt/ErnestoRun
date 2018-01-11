@@ -1,8 +1,10 @@
 package fhkufstein.ac.at.ernestorun;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class EndActivity extends AppCompatActivity {
@@ -15,6 +17,16 @@ public class EndActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         TextView pointView = (TextView) findViewById(R.id.textViewPoints);
+        Button buttonBack = (Button)findViewById(R.id.btnBackToStart);
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                goBack();
+
+            }
+        });
 
         if(getIntent().hasExtra("score") == true){
 
@@ -27,4 +39,10 @@ public class EndActivity extends AppCompatActivity {
         }
 
     }
+
+    public void goBack(){
+        Intent intent = new Intent(EndActivity.this, StartActivity.class);
+        startActivity(intent);
+    }
+
 }

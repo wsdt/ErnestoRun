@@ -141,6 +141,7 @@ public class GameActivity extends AppCompatActivity {
         setRandomBackground(randomnr);
         setRandomBackgroundMusik(randomnr);
         this.level++; //increase level
+        ((TextView) findViewById(R.id.levelLabel)).setText("Level "+this.level);
         setLevelProperties();
     }
 
@@ -358,6 +359,9 @@ public class GameActivity extends AppCompatActivity {
         final GameActivity instance = this;
 
         Log.d("MU", "MU: " + randomnr);
+        if (GameActivity.mediaPlayer != null) {
+            GameActivity.mediaPlayer.stopMusik();
+        }
         GameActivity.mediaPlayer = new Mediaplayer(instance, getResources().getIdentifier("bgmusik_" + randomnr, "raw", getPackageName()));
         GameActivity.mediaPlayer.startMusik();
 
@@ -422,6 +426,7 @@ public class GameActivity extends AppCompatActivity {
     private void endGame(){
         Intent intent = new Intent(this, EndActivity.class);
         intent.putExtra("score", score);
+        finish();
         startActivity(intent);
     }
 }
