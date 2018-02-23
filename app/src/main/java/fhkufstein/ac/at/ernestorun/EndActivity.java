@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import fhkufstein.ac.at.ernestorun.Classes.AdManager;
 
 public class EndActivity extends AppCompatActivity {
 
@@ -15,6 +18,10 @@ public class EndActivity extends AppCompatActivity {
         setContentView(R.layout.activity_end);
 
         getSupportActionBar().hide();
+
+        AdManager adManager = new AdManager(this);
+        adManager.initializeAdmob();
+        adManager.loadBannerAd((RelativeLayout) findViewById(R.id.adRL));
 
         TextView pointView = (TextView) findViewById(R.id.textViewPoints);
         Button buttonBack = (Button)findViewById(R.id.btnBackToStart);

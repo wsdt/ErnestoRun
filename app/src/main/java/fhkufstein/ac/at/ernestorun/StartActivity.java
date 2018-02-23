@@ -8,7 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
+import fhkufstein.ac.at.ernestorun.Classes.AdManager;
 import fhkufstein.ac.at.ernestorun.Classes.Mediaplayer;
 
 public class StartActivity extends AppCompatActivity implements View.OnClickListener{
@@ -28,6 +30,11 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         });
 
         getSupportActionBar().hide();
+
+        AdManager adManager = new AdManager(this);
+        adManager.initializeAdmob();
+        adManager.loadBannerAd((RelativeLayout) findViewById(R.id.adRL));
+        adManager.loadFullPageAd(null, null);
 
         addCharacters();
 //        startIntroMusik();

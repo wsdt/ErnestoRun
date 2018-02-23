@@ -5,9 +5,11 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import fhkufstein.ac.at.ernestorun.Classes.AdManager;
 import fhkufstein.ac.at.ernestorun.Classes.ImageAdapterBad;
 import fhkufstein.ac.at.ernestorun.Classes.ImageAdapterEnd;
 import fhkufstein.ac.at.ernestorun.Classes.ImageAdapterGood;
@@ -34,6 +36,10 @@ public class IconsActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 //        mediaplayer.resumeMusik();
+
+        AdManager adManager = new AdManager(this);
+        adManager.initializeAdmob();
+        adManager.loadBannerAd((RelativeLayout) findViewById(R.id.adRL));
 
         TextView textView = (TextView)findViewById(R.id.textviewicon);
 

@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import fhkufstein.ac.at.ernestorun.Classes.AdManager;
 import fhkufstein.ac.at.ernestorun.Classes.Mediaplayer;
 
 public class InfoActivity extends AppCompatActivity {
@@ -24,6 +26,10 @@ public class InfoActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 //        mediaplayer.resumeMusik(); //resume Musik of intro
+
+        AdManager adManager = new AdManager(this);
+        adManager.initializeAdmob();
+        adManager.loadBannerAd((RelativeLayout) findViewById(R.id.adRL));
 
         final ImageButton button1 = (ImageButton)findViewById(R.id.good);
         final ImageButton button2 = (ImageButton)findViewById(R.id.bad);
