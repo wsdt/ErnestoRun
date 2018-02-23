@@ -115,32 +115,32 @@ public class GameActivity extends AppCompatActivity {
         );
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        try {
-            GameActivity.mediaPlayer.pauseMusik();
-        } catch (NullPointerException e) {
-            Log.e("onPause", "NullpointerException - Mediaplayer");
-        }
-    }
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        try {
+//            GameActivity.mediaPlayer.pauseMusik();
+//        } catch (NullPointerException e) {
+//            Log.e("onPause", "NullpointerException - Mediaplayer");
+//        }
+//    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        try {
-            GameActivity.mediaPlayer.resumeMusik();
-        } catch (NullPointerException e) {
-            Log.e("onResume", "NullpointerException - Mediaplayer");
-        }
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        try {
+//            GameActivity.mediaPlayer.resumeMusik();
+//        } catch (NullPointerException e) {
+//            Log.e("onResume", "NullpointerException - Mediaplayer");
+//        }
+//    }
 
 
     public void changeLevel() {
         //IMPORTANT: Only images/sounds will be loaded which are below the max nr of the other one (img_1 will be called with sound_1)
         int randomnr = r.nextInt(((countBackgroundImages > countBackgroundSounds ? countBackgroundSounds : countBackgroundImages) - 1) + 1) + 1;
-        setRandomBackground(randomnr);
-        setRandomBackgroundMusik(randomnr);
+//        setRandomBackground(randomnr);
+//        setRandomBackgroundMusik(randomnr);
         this.level++; //increase level
         ((TextView) findViewById(R.id.levelLabel)).setText("Level " + this.level);
         setLevelProperties();
@@ -152,10 +152,10 @@ public class GameActivity extends AppCompatActivity {
         ((AnimationDrawable) (findViewById(R.id.character)).getBackground()).start();
     }
 
-    private void setRandomBackground(int randomnr) {
-        Log.d("BG", "BG: " + randomnr);
-        (findViewById(R.id.gameContent)).setBackgroundResource(getResources().getIdentifier("background_" + randomnr, "drawable", getPackageName()));
-    }
+//    private void setRandomBackground(int randomnr) {
+//        Log.d("BG", "BG: " + randomnr);
+//        (findViewById(R.id.gameContent)).setBackgroundResource(getResources().getIdentifier("background_" + randomnr, "drawable", getPackageName()));
+//    }
 
     //Server MEAL ############################################
     public void setLevelProperties() {
@@ -352,17 +352,17 @@ public class GameActivity extends AppCompatActivity {
 
 
     //MUSIK ##################################################
-    private void setRandomBackgroundMusik(final int randomnr) {
-        final GameActivity instance = this;
-
-        Log.d("MU", "MU: " + randomnr);
-        if (GameActivity.mediaPlayer != null) {
-            GameActivity.mediaPlayer.stopMusik();
-        }
-        GameActivity.mediaPlayer = new Mediaplayer(instance, getResources().getIdentifier("bgmusik_" + randomnr, "raw", getPackageName()));
-        GameActivity.mediaPlayer.startMusik();
-
-    }
+//    private void setRandomBackgroundMusik(final int randomnr) {
+//        final GameActivity instance = this;
+//
+//        Log.d("MU", "MU: " + randomnr);
+//        if (GameActivity.mediaPlayer != null) {
+//            GameActivity.mediaPlayer.stopMusik();
+//        }
+//        GameActivity.mediaPlayer = new Mediaplayer(instance, getResources().getIdentifier("bgmusik_" + randomnr, "raw", getPackageName()));
+//        GameActivity.mediaPlayer.startMusik();
+//
+//    }
 
     public void playEatSound(final Context context, final int eatsound) {
         new Thread(new Runnable() {

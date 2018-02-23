@@ -7,6 +7,15 @@
     android:layout_height="match_parent"
     tools:context="fhkufstein.ac.at.ernestorun.GameActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/background_1" />
+
     <Switch
         android:id="@+id/switchGreyBar"
         android:layout_width="wrap_content"

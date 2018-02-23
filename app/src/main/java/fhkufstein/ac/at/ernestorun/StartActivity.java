@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 import fhkufstein.ac.at.ernestorun.Classes.Mediaplayer;
 
 public class StartActivity extends AppCompatActivity implements View.OnClickListener{
-    public static Mediaplayer mediaplayer; //needs to be public for resuming in help activities
+//    public static Mediaplayer mediaplayer; //needs to be public for resuming in help activities
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,24 +30,24 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         getSupportActionBar().hide();
 
         addCharacters();
-        startIntroMusik();
+//        startIntroMusik();
 
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        mediaplayer.pauseMusik();
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-        mediaplayer.resumeMusik();
-    }
-
-    public void startIntroMusik() {
-        mediaplayer = new Mediaplayer(this,R.raw.intromusik);
-    }
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        mediaplayer.pauseMusik();
+//    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        mediaplayer.resumeMusik();
+//    }
+//
+//    public void startIntroMusik() {
+//        mediaplayer = new Mediaplayer(this,R.raw.intromusik);
+//    }
 
     @Override
     public void onClick(View view) {
