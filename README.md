@@ -1,1 +1,1 @@
-# ErnestoRun
+# ErnestoRun [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://GitHub.com/wsdt/ErnestoRun/graphs/commit-activity) [![Generic badge](https://img.shields.io/badge/In-JAVA-RED.svg)](https://www.java.com/) [![GitHub license](https://img.shields.io/github/license/wsdt/ErnestoRun.svg)](https://github.com/wsdt/ErnestoRun/blob/master/LICENSE)
