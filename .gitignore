@@ -1,3 +1,6 @@
+# hide sensitive data
+app\src\main\java\fhkufstein\ac\at\ernestorun\Classes\Constants.java
+
 *.iml
 .gradle
 /local.properties
