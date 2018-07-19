@@ -1,1 +1,6 @@
 # ErnestoRun [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://GitHub.com/wsdt/ErnestoRun/graphs/commit-activity) [![Generic badge](https://img.shields.io/badge/In-JAVA-RED.svg)](https://www.java.com/) [![GitHub license](https://img.shields.io/github/license/wsdt/ErnestoRun.svg)](https://github.com/wsdt/ErnestoRun/blob/master/LICENSE)
+
+Ernesto is very picky and passive-aggressive. He only likes specific things (whiskey, drugs, cigarettes and other (un-)healthy stuff). You get a list what he likes and you need to know it by heart during the actual game because all sort of food (or other stuff like bombs) is coming to you. If you eat what he doesn't like you loose points, if you eat sth. he likes you get points. It's simple as that. 
+
+## Maintenance [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+As I am doing several other projects now and would completely change the game (maybe I will do it next year or so), this repository won't be maintained. Nevertheless, pull-requests and issues are welcome. 
